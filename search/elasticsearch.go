@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"log"
 	"strings"
 
 	"github.com/jivesearch/jivesearch/search/document"
@@ -67,8 +66,6 @@ func (e *ElasticSearch) Fetch(q string, lang language.Tag, region language.Regio
 	idx := e.IndexName(a)
 
 	o := e.Client.Search().Index(idx).Type(e.Type).Query(qu).From(offset).Size(number)
-
-	log.Println(idx)
 
 	// sort by votes
 	if len(votes) > 0 {
