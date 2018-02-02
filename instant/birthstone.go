@@ -93,10 +93,10 @@ func (b *BirthStone) tests() []test {
 	contrib := contributors.Load([]string{"brentadamson"})
 
 	tests := []test{
-		test{
+		{
 			query: "January birthstone",
 			expected: []Solution{
-				Solution{
+				{
 					Type:         typ,
 					Triggered:    true,
 					Contributors: contrib,
@@ -105,10 +105,10 @@ func (b *BirthStone) tests() []test {
 				},
 			},
 		},
-		test{
+		{
 			query: "birthstone february",
 			expected: []Solution{
-				Solution{
+				{
 					Type:         typ,
 					Triggered:    true,
 					Contributors: contrib,
@@ -117,10 +117,10 @@ func (b *BirthStone) tests() []test {
 				},
 			},
 		},
-		test{
+		{
 			query: "march birth stone",
 			expected: []Solution{
-				Solution{
+				{
 					Type:         typ,
 					Triggered:    true,
 					Contributors: contrib,
@@ -129,10 +129,10 @@ func (b *BirthStone) tests() []test {
 				},
 			},
 		},
-		test{
+		{
 			query: "birth stone April",
 			expected: []Solution{
-				Solution{
+				{
 					Type:         typ,
 					Triggered:    true,
 					Contributors: contrib,
@@ -141,10 +141,10 @@ func (b *BirthStone) tests() []test {
 				},
 			},
 		},
-		test{
+		{
 			query: "birth stones may",
 			expected: []Solution{
-				Solution{
+				{
 					Type:         typ,
 					Triggered:    true,
 					Contributors: contrib,
@@ -153,10 +153,10 @@ func (b *BirthStone) tests() []test {
 				},
 			},
 		},
-		test{
+		{
 			query: "birthstones June",
 			expected: []Solution{
-				Solution{
+				{
 					Type:         typ,
 					Triggered:    true,
 					Contributors: contrib,
@@ -165,10 +165,10 @@ func (b *BirthStone) tests() []test {
 				},
 			},
 		},
-		test{
+		{
 			query: "July Birth Stones",
 			expected: []Solution{
-				Solution{
+				{
 					Type:         typ,
 					Triggered:    true,
 					Contributors: contrib,
@@ -177,10 +177,10 @@ func (b *BirthStone) tests() []test {
 				},
 			},
 		},
-		test{
+		{
 			query: "birthstones August",
 			expected: []Solution{
-				Solution{
+				{
 					Type:         typ,
 					Triggered:    true,
 					Contributors: contrib,
@@ -189,10 +189,10 @@ func (b *BirthStone) tests() []test {
 				},
 			},
 		},
-		test{
+		{
 			query: "september birthstones",
 			expected: []Solution{
-				Solution{
+				{
 					Type:         typ,
 					Triggered:    true,
 					Contributors: contrib,
@@ -201,10 +201,10 @@ func (b *BirthStone) tests() []test {
 				},
 			},
 		},
-		test{
+		{
 			query: "October birthstone",
 			expected: []Solution{
-				Solution{
+				{
 					Type:         typ,
 					Triggered:    true,
 					Contributors: contrib,
@@ -213,10 +213,10 @@ func (b *BirthStone) tests() []test {
 				},
 			},
 		},
-		test{
+		{
 			query: "birthstone November",
 			expected: []Solution{
-				Solution{
+				{
 					Type:         typ,
 					Triggered:    true,
 					Contributors: contrib,
@@ -225,10 +225,10 @@ func (b *BirthStone) tests() []test {
 				},
 			},
 		},
-		test{
+		{
 			query: "December birthstone",
 			expected: []Solution{
-				Solution{
+				{
 					Type:         typ,
 					Triggered:    true,
 					Contributors: contrib,

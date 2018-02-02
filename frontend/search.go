@@ -42,7 +42,7 @@ type data struct {
 }
 
 // Detect the user's preferred language(s).
-// The "l" param takes precendence over the "Accept-Language" header.
+// The "l" param takes precedence over the "Accept-Language" header.
 func (f *Frontend) detectLanguage(r *http.Request) []language.Tag {
 	preferred := []language.Tag{}
 	if lang := strings.TrimSpace(r.FormValue("l")); lang != "" {
