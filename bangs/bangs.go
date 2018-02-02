@@ -48,52 +48,59 @@ func New() *Bangs {
 	}
 
 	bngs := []Bang{
-		Bang{
+		{
 			[]string{"a", "amazon"},
 			"Amazon", "shopping",
 			[]Region{
-				Region{def, "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={{{term}}}"},
-				Region{"ca", "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={{{term}}}"},
-				Region{"fr", "https://www.amazon.fr/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={{{term}}}"},
-				Region{"uk", "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={{{term}}}"},
+				{def, "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={{{term}}}"},
+				{"ca", "https://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={{{term}}}"},
+				{"fr", "https://www.amazon.fr/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={{{term}}}"},
+				{"uk", "https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords={{{term}}}"},
 			},
 		},
-		Bang{
+		{
 			[]string{"b", "bing"},
 			"Bing", "search",
 			[]Region{
-				Region{def, "https://www.bing.com/search?q={{{term}}}"},
+				{def, "https://www.bing.com/search?q={{{term}}}"},
 			},
 		},
-		Bang{
+		{
+			[]string{"gh", "github"},
+			"Github", "programming",
+			[]Region{
+				{def, "https://github.com/search?q={{{term}}}&type=Everything&repo=&langOverride=&start_value=1"},
+			},
+		},
+		{
 			[]string{"g", "google"},
 			"Google", "search",
 			[]Region{
-				Region{def, "https://encrypted.google.com/search?hl={{{lang}}}&q={{{term}}}"},
-				Region{"ca", "https://www.google.ca/search?q={{{term}}}"},
-				Region{"fr", "https://www.google.fr/search?hl={{{lang}}}&q={{{term}}}"},
-				Region{"ru", "https://www.google.ru/search?hl={{{lang}}}&q={{{term}}}"},
+				{def, "https://encrypted.google.com/search?hl={{{lang}}}&q={{{term}}}"},
+				{"ca", "https://www.google.ca/search?q={{{term}}}"},
+				{"fr", "https://www.google.fr/search?hl={{{lang}}}&q={{{term}}}"},
+				{"ru", "https://www.google.ru/search?hl={{{lang}}}&q={{{term}}}"},
 			},
 		},
-		Bang{
+		{
 			[]string{"gfr", "googlefr"},
 			"Google France", "search",
 			[]Region{
-				Region{def, "https://www.google.fr/search?hl={{{lang}}}&q={{{term}}}"},
+				{def, "https://www.google.fr/search?hl={{{lang}}}&q={{{term}}}"},
 			},
 		},
-		Bang{
+		{
 			[]string{"gru", "googleru"},
 			"Google Russia", "search",
 			[]Region{
-				Region{def, "https://www.google.ru/search?hl={{{lang}}}&q={{{term}}}"},
+				{def, "https://www.google.ru/search?hl={{{lang}}}&q={{{term}}}"},
 			},
 		},
-		Bang{
+		{
 			[]string{"reddit"},
 			"Reddit", "social media",
 			[]Region{
-				Region{def, "https://www.reddit.com/search?q={{{term}}}&restrict_sr=&sort=relevance&t=all"},
+				{def, "https://www.reddit.com/search?q={{{term}}}&restrict_sr=&sort=relevance&t=all"},
 			},
 		},
 	}
