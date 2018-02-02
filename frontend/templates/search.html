@@ -1,0 +1,358 @@
+{{define "search_form"}}
+<div id="search_container">
+  <div class="ui-widget">
+    <form id="form" name="x" method="GET" action="/" role="search" name="q">
+    	<input id="query" type="text" data-query="{{.Context.Q}}" placeholder="" name="q" maxlength="2048" tabindex="1"
+    			autocomplete="off" title="Search" value="{{.Context.Q}}"
+          aria-label="Search" autofocus/><button id="search_submit" type="submit" tabindex="2"><i class="icon-search" aria-hidden="true"></i></button>
+      {{if .Context.L}}<input type="hidden" name="l" value="{{.Context.L}}"/>{{end}}
+      {{if .Context.R}}<input type="hidden" name="r" value="{{.Context.R}}"/>{{end}}
+      {{if .Context.N}}<input type="hidden" name="n" value="{{.Context.N}}"/>{{end}}
+      <!--don't set 'p' param...always force it back to page 1-->
+    </form>
+  </div>
+</div>
+{{end}}
+
+{{define "did_you_mean"}}
+  {{if .Alternative}}
+  <div class="pure-u-1" style="font-size:18px;cursor:pointer;">
+    <p>
+      Did you mean <i><a id="alternative" data-alternative="{{.Alternative}}">{{.Alternative}}?</a></i>
+    </p>
+  </div>
+  {{end}}
+{{end}}
+
+{{define "content"}}
+{{$context := .Context}}
+
+{{if $context.Q}}
+  <div id="container" class="pure-g">
+    <div id="spacer" class="pure-u-1 pure-u-xl-2-24" style="text-align:center;">
+      <a href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="115px" height="48px">
+          <g><text id="logo" x="7" y="37">Jive Search</text></g>
+        </svg>
+      </a>
+    </div>
+    <div class="pure-u-1 pure-u-xl-22-24">
+      {{template "search_form" .}}
+      {{if .Search.Count}}
+      <div id="count" class="pure-u-1 pure-u-xl-22-24">
+        {{.Search.Count | Commafy}} results
+      </div>
+      {{end}}
+      <div id="results_container" class="pure-u-1 pure-u-xl-22-24">
+        {{if and .Instant .Instant.Triggered}}
+          {{if or .Instant.Text .Instant.HTML}}
+          <div id="instant" class="pure-u-1 pure-u-xl-15-24">
+            <div id="answer" class="pure-u-1">
+              <div style="margin:15px;margin-bottom:5px;">
+              {{if .Instant.HTML}}
+                {{.Instant.HTML|SafeHTML}}
+              {{else}}
+                {{.Instant.Text}}
+              {{end}}
+              </div>
+              <div class="pure-u-1">
+                <div style="float:right;text-align:right;cursor:pointer;padding:15px;padding-top:5px;">
+                  <div id="moreinfo" class="pure-u-1">More Info</div>
+                  <div id="contributors" class="pure-u-1" style="display:none;"><br>
+                    <div class="pure-u-1">
+                      This Instant Answer was made by the following contributors:
+                    </div>
+                    {{range $contributor := .Instant.Contributors}}
+                    <div class="pure-u-1" style="float:right;text-align:right;">
+                      {{if $contributor.Github}}
+                        <a href="https://github.com/{{$contributor.Github}}" target="_blank">{{$contributor.Name}}</a>
+                      {{else}}
+                        {{$contributor.Name}}
+                      {{end}}
+                    </div>
+                    {{end}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{end}}
+        {{end}}
+
+        {{if .Wikipedia.Text}}
+        <div id="wikipedia" class="pure-u-1 pure-u-xl-9-24">
+          <div id="wikipedia_image">
+          {{range $i, $img := .Wikipedia.Claims.Flag}}
+            {{if eq $i 0}}
+            {{$key := $img | HMACKey}}
+              <a href="/image/250x,s{{$key}}/{{$img}}">
+                <img src="/image/250x,s{{$key}}/{{$img}}" title="{{$img}}" border="0" style="vertical-align:middle;max-height:100%;max-width:49.5%;display:inline-block;position:relative;padding:0px;margin:0px;"/>
+              </a>
+            {{end}}
+          {{end}}
+          {{range $i, $img := .Wikipedia.Claims.Image}}
+            {{if eq $i 0}}
+            {{$key := $img | HMACKey}}
+            <a href="/image/250x,s{{$key}}/{{$img}}">
+              <img src="/image/250x,s{{$key}}/{{$img}}" title="{{$img}}" border="0" style="vertical-align:middle;max-height:100%;max-width:49.5%;display:inline-block;position:relative;padding:0px;margin:0px;"/>
+            </a>
+            {{end}}
+          {{end}} 
+          </div>
+          <div id="wikipedia_box">
+            <div class="pure-u-1" style="font-size:30px;margin-bottom:1px;font-weight:400;">
+              {{.Wikipedia.Title}}
+            </div>
+            <div class="pure-u-1" style="font-size:14px;margin-bottom:1px;color:#666;margin-bottom:4px;">
+              {{$des := WikiLabel .Wikipedia.Descriptions $context.Preferred}}
+              {{Truncate $des 55 true}}
+            </div>
+
+            {{if .Wikipedia.Text}}
+            <div class="pure-u-1" style="font-size:14px;margin-bottom:4px;">
+              {{Truncate .Wikipedia.Text 250 true}}
+              {{if and .Wikipedia.Language .Wikipedia.Title}}
+                <!-- if this breaks Wikidata dumps have "sitelinks" -->
+                <a href="https://{{.Wikipedia.Language}}.wikipedia.org/wiki/{{.Wikipedia.Title|WikiCanonical}}">Wikipedia</a>
+              {{end}}
+            </div>
+            {{end}}
+
+            {{range $i, $c := .Wikipedia.Claims.Website}}
+              {{if eq $i 0}}
+              <div class="pure-u-1 wikipedia_claim">
+                <a href="{{$c}}" style="text-decoration: none !important;">
+                  <i class="icon-globe" aria-hidden="true" style="color: #0077be; text-shadow: 1px 1px 1px #ccc;"></i>
+                  <span class="wikipedia_social_media" style="color:#1a0dab;">{{$c}}</span>
+                </a>
+              </div>
+              {{end}}
+            {{end}}
+              
+            <div class="pure-g">
+            {{range $i, $c := .Wikipedia.Claims.Twitter}}
+              {{if eq $i 0}}
+              <div class="pure-u-3-8 wikipedia_claim">
+                <a href="https://twitter.com/{{$c}}" style="text-decoration: none !important;">
+                  <i class="icon-twitter" aria-hidden="true" style="color: #1DA1F2; text-shadow: 1px 1px 1px #ccc;"></i>
+                  <span class="wikipedia_social_media">Twitter</span>
+                </a>
+              </div>
+              {{end}}
+            {{end}} 
+
+            {{range $i, $c := .Wikipedia.Claims.Facebook}}
+              {{if eq $i 0}}
+              <div class="pure-u-3-8 wikipedia_claim">
+                <a href="https://www.facebook.com/{{$c}}" style="text-decoration: none !important;">
+                  <i class="icon-facebook-official" aria-hidden="true" style="color: #3b5998; text-shadow: 1px 1px 1px #ccc;"></i>
+                  <span class="wikipedia_social_media">Facebook</span>
+                </a>
+              </div>
+              {{end}}
+            {{end}} 
+
+            {{range $i, $c := .Wikipedia.Claims.Instagram}}
+              {{if eq $i 0}}
+              <div class="pure-u-3-8 wikipedia_claim">
+                <a href="https://www.instagram.com/{{$c}}" style="text-decoration: none !important;">
+                  <i class="icon-instagram" aria-hidden="true" style="color: #517fa4; text-shadow: 1px 1px 1px #ccc;"></i>
+                  <span class="wikipedia_social_media">Instagram</span>
+                </a>
+              </div>
+              {{end}}
+            {{end}}
+
+            {{range $i, $c := .Wikipedia.Claims.YouTube}}
+              {{if eq $i 0}}
+              <div class="pure-u-3-8 wikipedia_claim">
+                <a href="https://www.youtube.com/channel/{{$c}}" style="text-decoration: none !important;">
+                  <i class="icon-youtube-play" aria-hidden="true" style="color: #e52d27; text-shadow: 1px 1px 1px #ccc;"></i>
+                  <span class="wikipedia_social_media">YouTube</span>
+                </a>
+              </div>
+              {{end}}
+            {{end}}
+
+            {{range $i, $c := .Wikipedia.Claims.Spotify}}
+              {{if eq $i 0}}
+              <div class="pure-u-3-8 wikipedia_claim">
+                <a href="https://open.spotify.com/artist/{{$c}}" style="text-decoration: none !important;">
+                  <i class="icon-spotify" aria-hidden="true" style="color: #7ab800; text-shadow: 1px 1px 1px #ccc;"></i>
+                  <span class="wikipedia_social_media">Spotify</span>
+                </a>
+              </div>
+              {{end}}
+            {{end}}
+            </div>
+
+            {{$death := .Wikipedia.Claims.Death}}
+            {{range $i, $d := .Wikipedia.Claims.Birthday}}
+              {{if eq $i 0}} 
+              <div class="pure-u-1 wikipedia_claim">
+                <em>Born:</em>
+                {{if $death}}
+                  {{WikiDateTime $d false}}
+                {{else}}
+                  {{WikiDateTime $d true}}
+                {{end}}             
+              </div>
+              {{end}} 
+            {{end}} 
+
+            {{range $i, $d := .Wikipedia.Claims.Death}}
+              {{if eq $i 0}} 
+              <div class="pure-u-1 wikipedia_claim">
+                <em>Died:</em> {{WikiDateTime $d false}}                
+              </div>
+              {{end}}
+            {{end}}
+
+            {{range $i, $c := .Wikipedia.Claims.Spouse}}
+              <div class="pure-u-1 wikipedia_claim">
+              {{range $c.Item}}
+                {{if eq $i 0}}<em>Spouse:</em>
+                {{else}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {{end}} 
+                {{WikiLabel .Labels $context.Preferred}}
+              {{end}}
+              {{range $i, $s := $c.Start}}
+                {{if eq $i 0}}(m. {{WikiDateTime $s false}}{{end}}{{if not $c.End}}){{end}}
+              {{end}}
+              {{range $i, $e := $c.End}}
+                {{if eq $i 0}}- {{WikiDateTime $e false}}){{end}}
+              {{end}}              
+              </div>
+            {{end}}
+
+            {{$loc := .Wikipedia.Claims.Location}}
+            {{range $i, $c := .Wikipedia.Claims.Start}}
+              {{if eq $i 0}}
+              <div class="pure-u-1 wikipedia_claim">
+                <em>Started:</em> {{WikiDateTime $c false}} 
+                {{range $j, $l := $loc}}
+                  {{if eq $j 0}}
+                    - {{WikiLabel .Labels $context.Preferred}}
+                  {{end}}
+                {{end}}
+              </div>
+              {{end}}
+            {{end}}
+
+            {{range $i, $c := .Wikipedia.Claims.Members}}
+              <div class="pure-u-1 wikipedia_claim">
+              {{range $c.Item}}
+                {{if eq $i 0}}<em>Members:</em>
+                {{else}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {{end}} 
+                {{WikiLabel .Labels $context.Preferred}}
+              {{end}}
+              {{range $i, $s := $c.Start}}
+                {{if eq $i 0}}({{WikiDateTime $s false}}{{end}}{{if not $c.End}} - ){{end}}
+              {{end}}
+              {{range $i, $e := $c.End}}
+                {{if eq $i 0}}- {{WikiDateTime $e false}}){{end}}
+              {{end}}              
+              </div>
+            {{end}}
+
+            {{if .Wikipedia.Claims.Genre}}
+            <div class="pure-u-1 wikipedia_claim">
+              <em>Genre:</em> {{WikiJoin .Wikipedia.Claims.Genre $context.Preferred}}
+            </div>
+            {{end}}
+
+            {{range $i, $c := .Wikipedia.Claims.Height}}
+              {{if eq $i 0}}
+              <div class="pure-u-1 wikipedia_claim">
+                <em>Height:</em> {{WikiAmount $c $context.Region}}
+              </div>
+              {{end}}
+            {{end}}
+
+            {{range $i, $c := .Wikipedia.Claims.Weight}}
+              {{if eq $i 0}}
+              <div class="pure-u-1 wikipedia_claim">
+                <em>Weight:</em> {{WikiAmount $c $context.Region}}
+              </div>
+              {{end}}
+            {{end}}
+
+
+            {{range $i, $c := .Wikipedia.Claims.Currency}}
+              {{if eq $i 0}}
+              <div class="pure-u-1 wikipedia_claim">
+                <em>Currency:</em> {{WikiLabel $c.Labels $context.Preferred}}
+              </div>
+              {{end}}
+            {{end}}
+
+          </div>
+        </div>
+        {{end}}        
+        
+        <div id="results" class="pure-u-1 pure-u-xl-15-24">
+        {{template "did_you_mean" .}}
+        {{if .Search.Documents}}
+          {{range $i, $doc := .Search.Documents}}
+          <div class="pure-u-1">
+            <div class="pure-u-2-24 pure-u-md-1-24 vote" data-url="{{$doc.ID}}">
+              <div class="up arrow" data-vote="1"></div>
+              <div class="votes">{{$doc.Votes}}</div>
+              <div class="down arrow" data-vote="-1"></div>
+            </div>
+            <div class="pure-u-20-24 pure-u-md-21-24 result">
+             <div class="title"><a href="{{$doc.ID}}" rel="noopener">{{Truncate $doc.Title 60 true}}</a></div>
+             <div class="url">{{Truncate $doc.ID 80 false}}</div>
+             <div class="description">{{Truncate $doc.Description 215 true}}</div>
+             <div></div>
+            </div>
+          </div>
+          {{end}}
+          {{if .Search.Pagination}}
+          <div class="pure-u-1" style="text-align:center;padding-top:10px;padding-bottom:35px;">
+            <div class="pure-u-1" style="display:inline-block;color:#3367e5;">
+              {{if .Search.Previous}}
+              <span class="pagination" data-page="{{.Search.Previous}}" style="margin-right:35px;cursor:pointer;">Previous</span>
+              {{end}}
+              {{range $p := .Search.Pagination}}
+              <span class="pagination" data-page="{{$p}}" {{if eq $.Search.Page $p}}style="color:#000;margin-right:7px;"{{else}}style="color:#3367e5;margin-right:7px;"{{end}}>{{$p}}</span>
+              {{end}}
+              {{if .Search.Next}}
+              <span class="pagination" data-page="{{.Search.Next}}" style="margin-left:35px;cursor:pointer;">Next</span>
+              {{end}}
+            </div>
+          </div>
+          {{end}}
+        {{else}}
+        <div class="pure-u-1">
+          {{template "did_you_mean" .}}
+          <p style="padding-top:5px;">No results for <strong>{{.Context.Q}}</strong></p>
+          <p>Suggestions:</p>
+          <ul>
+            <li>Learn how to spell.</li>
+            <li>Try something else.</li>
+          </ul>
+        </div>
+        {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{else}}
+  <div class="pure-g">
+    <div id="container" class="pure-u-1">
+      <div style="text-align:center;">
+        <div class="pure-u-22-24">
+          <svg width="205" height="65" style="cursor:pointer;">
+           <g><text id="logo" x="7" y="35">Jive Search</text></g>
+          </svg>
+          {{template "search_form" .}}
+          <br>
+          <span id="tagline">The little search engine that could</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{end}}
+{{end}}

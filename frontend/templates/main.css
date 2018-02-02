@@ -1,0 +1,281 @@
+{{define "css"}}
+html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
+  font-family: arial,sans-serif;
+  font-size: 14px;
+}
+em{
+  font-style: normal;
+  font-weight: bold;
+}
+a{
+  text-decoration: none;
+  color: #1a0dab;
+}
+a:hover{
+  text-decoration: underline;
+}
+a:visited{
+  color: #609;
+}
+#logo{
+  font-size: 36px;
+  font-family: 'Open Sans',sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  fill: #000;
+}
+#search_container {
+  height: 38px;
+  width: auto;
+  padding: 10px 0px 15px;
+  margin: auto;
+  width: auto;
+}
+#form {
+  height: 38px;
+  position: relative;
+  background: #fff;
+  width: 100%;
+}
+#query {
+  padding: 0px 40px 0px 10px;
+  box-sizing: border-box;
+  color: #333;
+  display: block;
+  height: 38px;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 0px;
+  outline: #333 none 0px;
+}
+#query:focus{
+  border: 1px solid #4d90fe;
+}
+#search_submit {
+  bottom: 0px;
+  right: 0px;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+  position: absolute; 
+  white-space: pre;
+  z-index: 2;
+  align-items: flex-start;
+  background-size: 22px 22px;
+  border: 0px;
+  outline: 0px;
+  height: 38px;
+  width: 38px;
+  color: #4285f4; 
+  font-size: 22px;
+  padding: 0px;
+}
+
+.ui-autocomplete, .ui-autocomplete > li{ /* autocomplete */
+  list-style-type: none;
+  padding-left: 5px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  margin: 0;
+}
+.ui-autocomplete > li > a{
+  line-height: 22px;
+  font-style: normal;
+  color: #222;
+  cursor: default;
+}
+.ui-autocomplete { 
+  cursor: default;
+  max-height: 350px;
+  font-size: 16px;
+  box-shadow: rgba(0,0,0,.25) 0px 1px 3px 0px;
+  background-color: #fff;
+  font-weight: bold;
+}
+.ui-state-focus{
+  background: #f3f3f3;
+  outline:none;
+}
+.ui-helper-hidden-accessible { display:none; } /* this is for accessibility purposes...we can hide it */
+
+/* by default we don't display the count. 
+TODO: display via themes */  
+#count{
+  color:#999;
+  font-size:small;
+  margin-bottom:10px;
+  display: none;
+}
+body{
+  padding: 0px 7px;
+}
+/* ipad landscape
+  add some padding */
+@media screen
+  and (min-device-width: 48.063em) /* 769px */
+  and (max-device-width: 89.938em) /* 1439px */
+  and (orientation: landscape) {
+    body{
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+}
+@media screen
+  and (min-width: 80em) { /* .pure-u-xl-*, >=1280px */
+    #search_container,#results,#instant{
+      max-width: 635px;
+    }
+}
+{{if .Context.Q}}
+#logo{
+  font-size:20px;
+}
+#search_container{
+  margin-left:0px;
+}
+#instant{
+  margin-bottom: 15px;
+}
+#answer{
+  box-shadow: rgba(0,0,0,.25) 0px 1px 2px 0px;
+}
+#wikipedia{
+  margin-bottom: 15px;
+}
+#wikipedia_image{
+  box-shadow: rgba(0,0,0,.15) 0px 0px 2px 0px; /* remove box shadow from bottom of wikipedia_image */
+}
+#wikipedia_box{
+  box-shadow: rgba(0,0,0,.15) 0px 1px 2px 0px;
+  padding: 14px 14px 14px 14px;
+}
+.wikipedia_claim{
+  margin-top: 4px;
+  padding: 2px;
+}
+.wikipedia_social_media{
+  color:#111;
+}
+i{
+  font-size: 20px;
+  vertical-align: middle;
+}
+.wikipedia_social_media:hover{
+  text-decoration: underline;
+}
+.vote{
+  margin-top: 1px;
+}
+.votes{
+  text-align: center;
+  color: #adadad;
+  margin: 0;
+  padding: 0;
+  display: block;
+  font-size: small;
+  min-height: 5px;
+}
+.arrow{
+  margin: 2px 0px 2px 0px;
+  display: block;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  outline: none;
+  padding: 0;
+  width: 15px;
+  height: 14px;
+}
+.up{
+  background: url('/static/icons/sprite.png') no-repeat -42px -3px;
+}
+.down{
+  background: url('/static/icons/sprite.png') no-repeat 0 -3px;
+}
+.up.voted{
+  background: url('/static/icons/sprite.png') no-repeat -63px -3px;
+}
+.down.voted{
+  background: url('/static/icons/sprite.png') no-repeat -21px -3px;
+}
+.result{
+  margin-bottom: 23px;
+}
+.title{
+  line-height: 1.2;
+  font-size: 18px;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: break-word;
+  zoom: 1;
+  -webkit-tap-highlight-color: rgba(0,0,0,.1);
+}
+.url{
+  color: #006621;
+  height: auto;
+  line-height: 16px;
+  white-space: nowrap;
+  zoom: 1;
+}
+.description{
+  height: auto;
+  line-height: 18.2px;
+  word-wrap: break-word;
+  font-size: 13px;
+  color: #545454;
+  zoom: 1;
+}
+.pagination{
+  cursor: pointer;
+}
+.pagination:hover{
+  text-decoration: underline;
+}
+
+@media screen
+ and (max-width: 48.063em) { /* 769px */
+   #wikipedia_image{
+     max-width: 150px;
+   }
+}
+
+@media screen
+  and (min-width: 80em) { /* .pure-u-xl-*, >=1280px */
+    #spacer{
+      width: 115px;
+    }
+    #results_container{
+      min-width: 875px;
+      max-width: 1115px;
+    }
+    #wikipedia{
+      float: right;
+    }
+    .title{
+      word-wrap: nowrap;
+    }
+}
+{{else}}
+#container{
+  margin-top:100px;
+}
+#tagline{
+  font-family:'Open Sans',sans-serif;
+  font-size: 16px;
+  color: #666;
+}
+@media screen
+  and (min-width: 80em) { /* .pure-u-xl-*, >=1280px */
+    #container{
+      margin-top:225px;
+    }
+}
+{{end}}
+{{end}}

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{if .Context.Q}}{{.Context.Q}} - {{end}}Jive Search</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="referrer" content="origin"><!--Don't send search query when clicking on a link-->
+    <meta name="description" content="The little search engine that could">
+    <link href="/static/icons/favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="/static/pure-min.css">
+    {{"<!--[if lte IE 8]>" | SafeHTML}}
+    <link rel="stylesheet" href="/static/grids-responsive-old-ie-min.css">
+    {{"<![endif]-->" | SafeHTML}}
+    {{"<!--[if gt IE 8]><!-->" | SafeHTML}}
+    <link rel="stylesheet" href="/static/grids-responsive-min.css">
+    {{"<!--<![endif]-->" | SafeHTML}}
+    <link rel="stylesheet" href="/static/fonts/css/fonts.css">
+    <link rel="stylesheet" href="/static/fontello/css/fontello.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html-->
+    <link rel="apple-touch-icon" href="/static/icons/72x72.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/icons/152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/167x167.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/static/icons/180x180.png">
+
+    <style>
+      {{template "css" .}}
+    </style>
+  </head>
+  <body>
+    {{template "content" .}}
+    <script src="/static/jquery-1.12.2.min.js"></script>
+    <script src="/static/jqueryui-1.11.4.min.js"></script>
+    <script src="/static/main.js"></script>
+  </body>
+</html>
