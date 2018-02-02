@@ -62,7 +62,7 @@ func New() *Bangs {
 			[]string{"b", "bing"},
 			"Bing", "search",
 			[]Region{
-				Region{def, "https://www.bing.com/search?q=kenny{{{term}}}"},
+				Region{def, "https://www.bing.com/search?q={{{term}}}"},
 			},
 		},
 		Bang{
