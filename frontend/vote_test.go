@@ -1,11 +1,12 @@
 package frontend
 
 import (
-	"jivesearch/search/vote"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
 	"testing"
+
+	"github.com/jivesearch/jivesearch/search/vote"
 )
 
 func TestVoteHandler(t *testing.T) {

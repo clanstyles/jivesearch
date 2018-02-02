@@ -2,12 +2,12 @@ package frontend
 
 import (
 	"io/ioutil"
-	"jivesearch/suggest"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
 	"testing"
 
+	"github.com/jivesearch/jivesearch/suggest"
 	"github.com/spf13/pflag"
 )
 

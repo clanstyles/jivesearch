@@ -2,11 +2,12 @@
 package instant
 
 import (
-	"jivesearch/instant/contributors"
 	"math/rand"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/jivesearch/jivesearch/instant/contributors"
 )
 
 // QueryVar is the http request variable to parse

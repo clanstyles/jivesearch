@@ -4,9 +4,10 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"jivesearch/instant"
 	"log"
 	"net/http"
+
+	"github.com/jivesearch/jivesearch/instant"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {

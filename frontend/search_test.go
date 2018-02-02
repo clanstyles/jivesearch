@@ -1,17 +1,17 @@
 package frontend
 
 import (
-	"jivesearch/bangs"
-	"jivesearch/instant"
-	"jivesearch/search"
-	"jivesearch/search/document"
-	"jivesearch/search/vote"
-	"jivesearch/wikipedia"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
 	"testing"
 
+	"github.com/jivesearch/jivesearch/bangs"
+	"github.com/jivesearch/jivesearch/instant"
+	"github.com/jivesearch/jivesearch/search"
+	"github.com/jivesearch/jivesearch/search/document"
+	"github.com/jivesearch/jivesearch/search/vote"
+	"github.com/jivesearch/jivesearch/wikipedia"
 	"golang.org/x/text/language"
 )
 

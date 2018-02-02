@@ -2,11 +2,11 @@
 package search
 
 import (
-	"jivesearch/search/document"
-	"jivesearch/search/vote"
 	"math"
 	"strconv"
 
+	"github.com/jivesearch/jivesearch/search/document"
+	"github.com/jivesearch/jivesearch/search/vote"
 	"golang.org/x/text/language"
 )
 

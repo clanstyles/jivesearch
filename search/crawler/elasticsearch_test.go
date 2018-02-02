@@ -2,11 +2,12 @@ package crawler
 
 import (
 	"context"
-	"jivesearch/search/document"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 	"time"
+
+	"github.com/jivesearch/jivesearch/search/document"
 
 	"github.com/olivere/elastic"
 )

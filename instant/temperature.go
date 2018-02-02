@@ -2,10 +2,11 @@ package instant
 
 import (
 	"fmt"
-	"jivesearch/instant/contributors"
 	"net/http"
 	"regexp"
 	"strconv"
+
+	"github.com/jivesearch/jivesearch/instant/contributors"
 )
 
 // Temperature is an instant answer

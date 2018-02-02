@@ -6,20 +6,19 @@ import (
 	"encoding/json"
 	"fmt"
 	"html/template"
-	"jivesearch/bangs"
-	"jivesearch/log"
-	"jivesearch/search"
-	"jivesearch/search/vote"
-	"jivesearch/suggest"
-	"jivesearch/wikipedia"
 	"net/http"
 	"strings"
 	"time"
 
-	"golang.org/x/text/language"
-
+	"github.com/jivesearch/jivesearch/bangs"
+	"github.com/jivesearch/jivesearch/log"
+	"github.com/jivesearch/jivesearch/search"
+	"github.com/jivesearch/jivesearch/search/vote"
+	"github.com/jivesearch/jivesearch/suggest"
+	"github.com/jivesearch/jivesearch/wikipedia"
 	"github.com/oxtoacart/bpool"
 	"github.com/pkg/errors"
+	"golang.org/x/text/language"
 )
 
 // Frontend holds settings for our languages supported, backend, etc.

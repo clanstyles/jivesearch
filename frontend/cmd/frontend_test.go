@@ -1,12 +1,12 @@
 package main
 
 import (
-	"jivesearch/frontend"
-	"jivesearch/wikipedia"
 	"reflect"
 	"testing"
 	"time"
 
+	"github.com/jivesearch/jivesearch/frontend"
+	"github.com/jivesearch/jivesearch/wikipedia"
 	"github.com/spf13/viper"
 	"golang.org/x/text/language"
 )

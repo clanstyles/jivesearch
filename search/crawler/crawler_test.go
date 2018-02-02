@@ -3,8 +3,6 @@ package crawler
 import (
 	"bytes"
 	"io/ioutil"
-	"jivesearch/search/crawler/robots"
-	"jivesearch/search/document"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -12,7 +10,10 @@ import (
 	"testing"
 	"time"
 
+	"github.com/jivesearch/jivesearch/search/document"
+
 	"github.com/jarcoal/httpmock"
+	"github.com/jivesearch/jivesearch/search/crawler/robots"
 	"github.com/spf13/pflag"
 )
 

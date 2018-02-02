@@ -4,15 +4,16 @@ package crawler
 import (
 	"context"
 	"io"
-	"jivesearch/config"
-	"jivesearch/log"
-	"jivesearch/search/crawler/queue"
-	"jivesearch/search/crawler/robots"
-	"jivesearch/search/document"
 	"net/http"
 	"net/url"
 	"strconv"
 
+	"github.com/jivesearch/jivesearch/search/document"
+
+	"github.com/jivesearch/jivesearch/config"
+	"github.com/jivesearch/jivesearch/log"
+	"github.com/jivesearch/jivesearch/search/crawler/queue"
+	"github.com/jivesearch/jivesearch/search/crawler/robots"
 	"github.com/pkg/errors"
 	"github.com/temoto/robotstxt"
 

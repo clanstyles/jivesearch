@@ -1,11 +1,12 @@
 package instant
 
 import (
-	"jivesearch/instant/contributors"
 	"math/rand"
 	"net/http"
 	"regexp"
 	"strconv"
+
+	"github.com/jivesearch/jivesearch/instant/contributors"
 )
 
 // Random is an instant answer

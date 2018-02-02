@@ -2,13 +2,14 @@ package main
 
 import (
 	"encoding/json"
-	"jivesearch/instant"
-	"jivesearch/instant/contributors"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
 	"reflect"
 	"testing"
+
+	"github.com/jivesearch/jivesearch/instant"
+	"github.com/jivesearch/jivesearch/instant/contributors"
 )
 
 func TestHandler(t *testing.T) {

@@ -3,8 +3,8 @@ package document
 import (
 	"context"
 	"fmt"
-	"jivesearch/log"
 
+	"github.com/jivesearch/jivesearch/log"
 	"github.com/olivere/elastic"
 	"golang.org/x/text/language"
 )

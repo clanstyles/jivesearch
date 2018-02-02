@@ -1,9 +1,10 @@
 package instant
 
 import (
-	"jivesearch/instant/contributors"
 	"net/http"
 	"strings"
+
+	"github.com/jivesearch/jivesearch/instant/contributors"
 )
 
 // Reverse is an instant answer

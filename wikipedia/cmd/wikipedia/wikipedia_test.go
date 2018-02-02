@@ -1,12 +1,12 @@
 package main
 
 import (
-	"jivesearch/wikipedia"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
 	"testing"
 
+	"github.com/jivesearch/jivesearch/wikipedia"
 	"golang.org/x/text/language"
 )
 

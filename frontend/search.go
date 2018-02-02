@@ -2,17 +2,16 @@ package frontend
 
 import (
 	"database/sql"
-	"jivesearch/instant"
-	"jivesearch/log"
-	"jivesearch/search"
-	"jivesearch/wikipedia"
 	"net/http"
 	"strconv"
 	"strings"
 	"time"
 
+	"github.com/jivesearch/jivesearch/instant"
+	"github.com/jivesearch/jivesearch/log"
+	"github.com/jivesearch/jivesearch/search"
+	"github.com/jivesearch/jivesearch/wikipedia"
 	"github.com/pkg/errors"
-
 	"golang.org/x/text/language"
 )
 

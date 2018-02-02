@@ -1,12 +1,13 @@
 package instant
 
 import (
-	"jivesearch/instant/contributors"
 	"net/http"
 	"regexp"
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/jivesearch/jivesearch/instant/contributors"
 )
 
 // Stats is an instant answer that

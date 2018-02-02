@@ -1,10 +1,11 @@
 package frontend
 
 import (
-	"jivesearch/search/vote"
 	"net/http"
 	"strconv"
 	"strings"
+
+	"github.com/jivesearch/jivesearch/search/vote"
 )
 
 func (f *Frontend) voteHandler(w http.ResponseWriter, r *http.Request) *response {

@@ -3,8 +3,9 @@ package vote
 
 import (
 	"errors"
-	"jivesearch/search/document"
 	"time"
+
+	"github.com/jivesearch/jivesearch/search/document"
 )
 
 // Vote represents a user's vote for a url

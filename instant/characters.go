@@ -1,10 +1,11 @@
 package instant
 
 import (
-	"jivesearch/instant/contributors"
 	"net/http"
 	"strconv"
 	"strings"
+
+	"github.com/jivesearch/jivesearch/instant/contributors"
 )
 
 // Characters is an instant answer

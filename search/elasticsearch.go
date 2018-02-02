@@ -4,11 +4,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"jivesearch/search/document"
-	"jivesearch/search/vote"
 	"log"
 	"strings"
 
+	"github.com/jivesearch/jivesearch/search/document"
+	"github.com/jivesearch/jivesearch/search/vote"
 	"github.com/olivere/elastic"
 	"golang.org/x/text/language"
 )

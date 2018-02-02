@@ -2,11 +2,12 @@ package instant
 
 import (
 	"fmt"
-	"jivesearch/instant/contributors"
 	"net/http"
 	"regexp"
 	"strconv"
 	"strings"
+
+	"github.com/jivesearch/jivesearch/instant/contributors"
 )
 
 // Potus is an instant answer

@@ -1,8 +1,9 @@
 package instant
 
 import (
-	"jivesearch/instant/contributors"
 	"net/http"
+
+	"github.com/jivesearch/jivesearch/instant/contributors"
 )
 
 // BirthStone is an instant answer

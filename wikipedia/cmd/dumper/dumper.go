@@ -4,13 +4,13 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"jivesearch/config"
-	"jivesearch/log"
-	"jivesearch/wikipedia"
 	"os"
 	"strings"
 	"sync"
 
+	"github.com/jivesearch/jivesearch/config"
+	"github.com/jivesearch/jivesearch/log"
+	"github.com/jivesearch/jivesearch/wikipedia"
 	"github.com/spf13/viper"
 	"golang.org/x/text/language"
 )

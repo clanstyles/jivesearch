@@ -4,10 +4,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"jivesearch/search/document"
 	"sync"
 	"time"
 
+	"github.com/jivesearch/jivesearch/search/document"
 	"github.com/olivere/elastic"
 )
 

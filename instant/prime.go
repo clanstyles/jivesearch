@@ -2,12 +2,13 @@ package instant
 
 import (
 	"fmt"
-	"jivesearch/instant/contributors"
 	"math"
 	"net/http"
 	"regexp"
 	"strconv"
 	"strings"
+
+	"github.com/jivesearch/jivesearch/instant/contributors"
 )
 
 // Prime is an instant answer

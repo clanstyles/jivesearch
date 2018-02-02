@@ -82,6 +82,13 @@ func New() *Bangs {
 				Region{def, "https://www.google.ru/search?hl={{{lang}}}&q={{{term}}}"},
 			},
 		},
+		Bang{
+			[]string{"reddit"},
+			"Reddit", "social media",
+			[]Region{
+				Region{def, "https://www.reddit.com/search?q={{{term}}}&restrict_sr=&sort=relevance&t=all"},
+			},
+		},
 	}
 
 	// create a map for faster lookups

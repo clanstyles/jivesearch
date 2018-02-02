@@ -4,11 +4,12 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
-	"jivesearch/bangs"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
 	"testing"
+
+	"github.com/jivesearch/jivesearch/bangs"
 )
 
 func TestBangsHandler(t *testing.T) {

@@ -1,10 +1,11 @@
 package instant
 
 import (
-	"jivesearch/instant/contributors"
 	"net/http"
 	"regexp"
 	"strconv"
+
+	"github.com/jivesearch/jivesearch/instant/contributors"
 )
 
 // Frequency is an instant answer

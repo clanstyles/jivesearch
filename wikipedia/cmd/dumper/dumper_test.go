@@ -1,12 +1,12 @@
 package main
 
 import (
-	"jivesearch/wikipedia"
 	"net/url"
 	"reflect"
 	"testing"
 
 	"github.com/jarcoal/httpmock"
+	"github.com/jivesearch/jivesearch/wikipedia"
 	"github.com/spf13/viper"
 	"golang.org/x/text/language"
 )

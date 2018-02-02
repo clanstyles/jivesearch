@@ -2,10 +2,10 @@ package frontend
 
 import (
 	"html/template"
-	"jivesearch/wikipedia"
 	"reflect"
 	"testing"
 
+	"github.com/jivesearch/jivesearch/wikipedia"
 	"golang.org/x/text/language"
 )
 

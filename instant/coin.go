@@ -1,9 +1,10 @@
 package instant
 
 import (
-	"jivesearch/instant/contributors"
 	"math/rand"
 	"net/http"
+
+	"github.com/jivesearch/jivesearch/instant/contributors"
 )
 
 // Coin is an instant answer

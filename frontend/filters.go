@@ -6,14 +6,14 @@ import (
 	"encoding/base64"
 	"fmt"
 	"html/template"
-	"jivesearch/log"
-	"jivesearch/wikipedia"
 	"math"
 	"os"
 	"strconv"
 	"strings"
 	"time"
 
+	"github.com/jivesearch/jivesearch/log"
+	"github.com/jivesearch/jivesearch/wikipedia"
 	"golang.org/x/text/language"
 )
 

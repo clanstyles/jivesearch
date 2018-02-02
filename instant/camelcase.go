@@ -1,9 +1,10 @@
 package instant
 
 import (
-	"jivesearch/instant/contributors"
 	"net/http"
 	"strings"
+
+	"github.com/jivesearch/jivesearch/instant/contributors"
 )
 
 // CamelCase is an instant answer

@@ -1,13 +1,13 @@
 package search
 
 import (
-	"jivesearch/search/document"
-	"jivesearch/search/vote"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
 	"testing"
 
+	"github.com/jivesearch/jivesearch/search/document"
+	"github.com/jivesearch/jivesearch/search/vote"
 	"github.com/olivere/elastic"
 	"golang.org/x/text/language"
 )

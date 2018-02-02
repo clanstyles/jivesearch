@@ -3,11 +3,11 @@ package main
 
 import (
 	"fmt"
-	"jivesearch/bangs"
 	"log"
 	"net/http"
 	"strings"
 
+	"github.com/jivesearch/jivesearch/bangs"
 	"golang.org/x/text/language"
 )
 

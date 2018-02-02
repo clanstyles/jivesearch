@@ -1,12 +1,12 @@
 package frontend
 
 import (
-	"jivesearch/config"
 	"net/http"
 	"os"
 	"time"
 
 	"github.com/gorilla/mux"
+	"github.com/jivesearch/jivesearch/config"
 	"willnorris.com/go/imageproxy"
 )
 
